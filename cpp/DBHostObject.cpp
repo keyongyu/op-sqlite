@@ -10,14 +10,14 @@
 #include "utils.hpp"
 #include <iostream>
 #include <utility>
+
+namespace opsqlite {
 #ifndef OP_SQLITE_USE_LIBSQL
 sqlite3 *db_for_http_data_sync = nullptr;
 sqlite3 *    get_db_for_http_data_sync(){
     return db_for_http_data_sync;
 };
 #endif
-namespace opsqlite {
-
 namespace jsi = facebook::jsi;
 namespace react = facebook::react;
 
