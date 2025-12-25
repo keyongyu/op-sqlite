@@ -10,7 +10,12 @@
 #include "utils.hpp"
 #include <iostream>
 #include <utility>
-
+#ifndef OP_SQLITE_USE_LIBSQL
+sqlite3 *db_for_http_data_sync = nullptr;
+sqlite3 *    get_db_for_http_data_sync(){
+    return db_for_http_data_sync;
+};
+#endif
 namespace opsqlite {
 
 namespace jsi = facebook::jsi;
@@ -580,7 +585,7 @@ void DBHostObject::create_jsi_functions(jsi::Runtime &rt) {
     return unsubscribe;
   });
 #endif
-
+ 
   function_map["prepareStatement"] = HFN(this) {
     auto query = args[0].asString(rt).utf8(rt);
 #ifdef OP_SQLITE_USE_LIBSQL
@@ -635,6 +640,14 @@ void DBHostObject::create_jsi_functions(jsi::Runtime &rt) {
 
     return promise;
   });
+  #ifndef OP_SQLITE_USE_LIBSQL
+  function_map["useForHttpDataSync"] = HFN(this) {
+      db_for_http_data_sync = db;
+      return {};
+  });
+  #endif
+
+
 }
 
 std::vector<jsi::PropNameID> DBHostObject::getPropertyNames(jsi::Runtime &_rt) {
@@ -676,6 +689,9 @@ void DBHostObject::invalidate() {
   opsqlite_libsql_close(db);
 #else
   if (db != nullptr) {
+    if(db==db_for_http_data_sync){
+      db_for_http_data_sync = nullptr;
+    }
     opsqlite_close(db);
     db = nullptr;
   }

@@ -147,6 +147,7 @@ export type _InternalDB = {
   setReservedBytes: (reservedBytes: number) => void;
   getReservedBytes: () => number;
   flushPendingReactiveQueries: () => Promise<void>;
+  useForHttpDataSync: () => void;
 };
 
 export type DB = {
@@ -301,6 +302,7 @@ export type DB = {
    * @returns void
    */
   flushPendingReactiveQueries: () => Promise<void>;
+  useForHttpDataSync: () => void;
 };
 
 export type DBParams = {

@@ -1,6 +1,6 @@
 {
   "name": "@op-engineering/op-sqlite",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Fastest SQLite for React Native",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
@@ -61,7 +61,7 @@
     "clang-format": "^1.8.0",
     "react": "19.1.1",
     "react-native": "0.82.1",
-    "react-native-builder-bob": "^0.40.15",
+    "react-native-builder-bob": "^0.40.17",
     "typescript": "^5.9.2"
   },
   "peerDependencies": {

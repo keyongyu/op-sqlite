@@ -19,6 +19,9 @@
 
 namespace opsqlite {
 
+#ifndef OP_SQLITE_USE_LIBSQL
+sqlite3 *    get_db_for_http_data_sync();
+#endif
 namespace jsi = facebook::jsi;
 namespace react = facebook::react;
 

@@ -45,11 +45,11 @@
     "node": ">=18"
   },
   "op-sqlite": {
-    "libsql": true,
+    "libsql": false,
     "sqlcipher": false,
     "iosSqlite": false,
-    "fts5": true,
-    "rtree": true,
+    "fts5": false,
+    "rtree": false,
     "crsqlite": false,
     "sqliteVec": false,
     "performanceMode": true,

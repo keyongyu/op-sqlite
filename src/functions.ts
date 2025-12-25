@@ -91,6 +91,7 @@ function enhanceDB(db: _InternalDB, options: DBParams): DB {
   // spreading the object does not work with HostObjects (db)
   // We need to manually assign the fields
   let enhancedDb = {
+    useForHttpDataSync: db.useForHttpDataSync,
     delete: db.delete,
     attach: db.attach,
     detach: db.detach,

@@ -19,10 +19,12 @@ export default function App() {
   useEffect(() => {
     const work = async () => {
       let start = performance.now();
-      open({
+      let db1 =open({
         name: 'dummyDb.sqlite',
       });
+      db1.useForHttpDataSync();
       setOpenTime(performance.now() - start);
+      db1.close();
 
       try {
         const results = await runTests();
@@ -77,7 +79,7 @@ export default function App() {
       <SafeAreaView style={styles.container}>
         <View>
           <Text style={styles.performanceText}>
-            Open DB time: {openTime.toFixed(0)} ms
+            Open DB timex: {openTime.toFixed(0)} ms
           </Text>
           <Text style={styles.performanceText}>
             100_000 query time: {perfResult.toFixed(0)} ms
