@@ -2,7 +2,7 @@
 
 #include <ReactCommon/CallInvoker.h>
 #include <memory>
-#include <sqlite3.h>
+#include "sqlite3.h"
 #include <string>
 #include <variant>
 #include <vector>
